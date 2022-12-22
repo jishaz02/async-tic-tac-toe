@@ -67,7 +67,7 @@ const GamePage = () => {
         <Link to='/home'>
       <img className='mb-8' src="https://img.icons8.com/ios-glyphs/30/333333/chevron-left.png"/>
         </Link>
-      <p className=' text-[#333333] font-[700] text-[28px]'>Game with {gamedata && gamedata.data().fromEmail == user.email ? gamedata.data().toName : gamedata.data().fromName }</p>
+      <p className=' text-[#333333] font-[700] text-[28px]'>Game with {gamedata && gamedata.data().fromEmail == user.email ? gamedata.data().toName : gamedata ? gamedata.data().fromName : '' }</p>
       <p className=' text-sm font-[400] text-[#333333] mb-2'>Your piece</p>
       <img src={gamedata && gamedata.data().fromEmail == user.email ? Cross : Circle} className='h-10 my-6 mx-2'/>
       <div className=' w-full flex items-center justify-center'>
