@@ -28,7 +28,7 @@ const HomePage = () => {
         <p className=' font-[700] text-[28px] text-[#333333]'>Your Games</p>
         <p className='font-[700] text-[18px] text-[#FF0000]' onClick={() => logout()}>Logout</p>
         </div>
-        <div className='h-10'></div>
+        <div className='h-[6vh]'></div>
       {data && data.length == 0 &&  <div className='items-center flex flex-col justify-center w-full h-full'>
       <p className=' text-[72px] font-thin leading-[70px] font-bilbo'>No Games</p>
       <p className=' text-[72px] font-thin font-bilbo'>Found</p>
@@ -68,7 +68,7 @@ const HomePage = () => {
         }
 
         if(winner != '' && winner != user.email){
-            description = toName + ' Won!'
+            description = name + ' Won!'
         }
 
         if(winner == 'draw'){

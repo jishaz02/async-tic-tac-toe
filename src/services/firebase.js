@@ -68,16 +68,21 @@ export const getGames = async (email) => {
   const fromGames = await firestore
     .collection("games")
     .where("fromEmail", "==", email)
-    .orderBy("updatedAt", "desc")
+    // .orderBy("updatedAt", "desc")
     .get();
 
   const toGames = await firestore
     .collection("games")
     .where("toEmail", "==", email)
-    .orderBy("updatedAt", "desc")
+    // .orderBy("updatedAt", "desc")
     .get();
 
-  return [...fromGames.docs, ...toGames.docs];
+  const games = [...fromGames.docs, ...toGames.docs];
+  games.sort((a, b) => {
+    return b.data().updatedAt - a.data().updatedAt;
+  });
+
+  return games;
 };
 
 export const getGame = (gameId, callback) => {

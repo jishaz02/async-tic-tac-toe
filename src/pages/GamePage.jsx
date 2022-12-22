@@ -4,6 +4,7 @@ import Circle from '../assets/images/circle.svg'
 import { Link, useParams } from 'react-router-dom'
 import { getGame, updateGame } from '../services/firebase'
 import { UserContext } from '../providers/UserProvider'
+import Confetti from 'react-confetti'
 
 const GamePage = () => {
     const user = useContext(UserContext)
@@ -71,10 +72,11 @@ const GamePage = () => {
       <p className=' text-sm font-[400] text-[#333333] mb-2'>Your piece</p>
       <img src={gamedata && gamedata.data().fromEmail == user.email ? Cross : Circle} className='h-10 my-6 mx-2'/>
       <div className=' w-full flex items-center justify-center'>
-      <div className=' h-[420px] w-[360px] bg-[#FFE79E] flex flex-col items-center justify-start mb-12'>
+      <div className=' h-[420px] w-[360px] bg-[#FFE79E] flex flex-col items-center justify-start mb-12 overflow-visible'>
         <p className='m-4 text-lg text-[#212121] font-[400]'>{
             gamedata && gamedata.data().winner == '' ? gamedata && gamedata.data().turn == user.email ? 'Your turn' : 'Opponent\'s turn' : gamedata && gamedata.data().winner == 'draw' ? 'Draw' : gamedata && gamedata.data().winner == user.email ? 'You won' : 'You lost'
         }</p>
+        {gamedata && gamedata.data().winner == user.email && <Confetti/>}
         <div className='grid grid-cols-3 gap-3 '>
             <div className='h-28 w-28 bg-white flex items-center justify-center' onClick={()=>handleMove(0, board)}><img src={board[0] == '' ? null : board[0] == 'x' ? Cross : Circle}></img></div>
             <div className='h-28 w-28 bg-white flex items-center justify-center' onClick={()=>handleMove(1, board)}><img src={board[1] == '' ? null : board[1] == 'x' ? Cross : Circle}></img></div>
