@@ -1,6 +1,7 @@
-# Async Tic Tac Toe
+# Async Tic-Tac-Toe
 
-Turn by turn asynchronous multiplayer Tic Tac Toe game.
+Turn-by-turn asynchronous multiplayer Tic-Tac-Toe game ⭕❌.
+Built using React and Firebase 🔥.
 
 ## Installation Steps
 
